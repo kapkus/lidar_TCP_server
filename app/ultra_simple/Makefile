@@ -23,10 +23,18 @@ MODULE_NAME := $(notdir $(CURDIR))
 
 include $(HOME_TREE)/mak_def.inc
 
-CXXSRC += main.cpp
-C_INCLUDES += -I$(CURDIR)/../../sdk/include -I$(CURDIR)/../../sdk/src -I$(CURDIR)/external
+# Source files
+CXXSRC += main.cpp \
+          src/lidar.cpp \
+          src/tcp_server.cpp
 
-EXTRA_OBJ := 
+# Include directories
+C_INCLUDES += -I$(CURDIR)/../../sdk/include \
+              -I$(CURDIR)/../../sdk/src \
+              -I$(CURDIR)/include \
+              -I$(CURDIR)/external
+
+# Libraries
 LD_LIBS += -lstdc++ -lpthread
 
 all: build_app
