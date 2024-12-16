@@ -17,6 +17,9 @@ public:
 
 private:
     void handleClient(int clientSocket);
+    void handleStartScan(int clientSocket);
+    void handleGetSample(int clientSocket);
+    void handleStopScan(int clientSocket);
     void sendJsonResponse(int clientSocket, const std::string& command, const nlohmann::json& response);
     void cleanupSocket(int socket);
 

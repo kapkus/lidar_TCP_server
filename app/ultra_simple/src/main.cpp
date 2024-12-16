@@ -25,7 +25,6 @@ int main(int argc, char* argv[]) {
     Lidar lidar;
     std::atomic<bool> isLidarAvailable(false);
 
-    // Background thread to retry LIDAR initialization
     std::thread lidarInitThread([&]() {
         while (!ctrl_c_pressed) {
             if (!lidar.getDriver()) {
@@ -49,7 +48,6 @@ int main(int argc, char* argv[]) {
         server.start();
         });
 
-    // Wait for Ctrl+C
     while (!ctrl_c_pressed) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
